@@ -8,33 +8,32 @@ description:
   human:
     en_US: Generate a video via Ace Data Cloud Luma Videos API.
     zh_Hans: 通过 Ace Data Cloud Luma Videos API 生成视频。
-  llm: Generate a video (generate/extend) via Ace Data Cloud Luma Videos API. Generation
-    returns a task ID. Query the same task until complete; never resubmit a pending
-    generation.
+  llm: Generate a video via Ace Data Cloud Luma Videos API. For asynchronous results,
+    preserve task_id and use the task retrieval tool until completion. A successful
+    submission is not completed output.
 parameters:
 - name: loop
   type: boolean
   required: false
+  form: form
   label:
     en_US: Loop
     zh_Hans: 循环视频
   human_description:
     en_US: Optional loop switch.
-    zh_Hans: 可选循环开关。
+    zh_Hans: 是否对生成的视频启用循环播放。
   llm_description: Optional loop switch.
-  form: form
-  default: false
 - name: action
   type: select
   required: false
+  form: form
   label:
     en_US: Action
     zh_Hans: 行为
   human_description:
     en_US: Choose how to generate the video.
-    zh_Hans: 选择生成方式。
+    zh_Hans: 操作类型。首次生成视频时使用 `generate`，对已有视频进行续写时使用 `extend`。
   llm_description: Choose how to generate the video.
-  form: form
   default: generate
   options:
   - value: generate
@@ -48,82 +47,103 @@ parameters:
 - name: prompt
   type: string
   required: false
+  form: llm
   label:
     en_US: Prompt
     zh_Hans: 提示词
   human_description:
     en_US: Required for generate. Optional for extend.
-    zh_Hans: generate 必填，extend 可选。
+    zh_Hans: 用于生成视频的文本提示词。
   llm_description: Required for generate. Optional for extend.
-  form: llm
+- name: timeout
+  type: number
+  required: false
+  form: form
+  label:
+    en_US: Timeout
+    zh_Hans: timeout
+  human_description:
+    en_US: Set timeout for this operation.
+    zh_Hans: API 返回数据的超时时间（单位：秒）。
+  llm_description: Set timeout for this operation.
 - name: video_id
   type: string
   required: false
+  form: form
   label:
     en_US: Video ID
     zh_Hans: 视频ID
   human_description:
     en_US: For extend. If specified, will use video_id instead of video_url.
-    zh_Hans: extend 用。若填写则优先使用 video_id。
+    zh_Hans: 用于续写操作（`extend`）的已生成视频的唯一标识符。若同时指定，优先使用 `video_id` 而非 `video_url`。
   llm_description: For extend. If specified, will use video_id instead of video_url.
-  form: form
 - name: aspect_ratio
   type: string
   required: false
+  form: form
   label:
     en_US: Aspect ratio
     zh_Hans: 画面比例
   human_description:
     en_US: Optional output aspect ratio (e.g. 16:9).
-    zh_Hans: 可选输出比例（如 16:9）。
+    zh_Hans: 生成视频的宽高比，例如 `16:9`。
   llm_description: Optional output aspect ratio (e.g. 16:9).
-  form: form
   default: '16:9'
 - name: video_url
   type: string
   required: false
+  form: form
   label:
     en_US: Video URL
     zh_Hans: 视频链接
   human_description:
     en_US: For extend. Provide the URL of an existing video.
-    zh_Hans: extend 用。传入已有视频链接。
+    zh_Hans: 用于续写操作（`extend`）的原始视频 URL。若同时指定了 `video_id`，则以 `video_id` 为准。
   llm_description: For extend. Provide the URL of an existing video.
-  form: form
 - name: enhancement
   type: boolean
   required: false
+  form: form
   label:
     en_US: Enhancement
     zh_Hans: 清晰度增强
   human_description:
     en_US: Optional enhancement switch.
-    zh_Hans: 可选清晰度增强开关。
+    zh_Hans: 是否对输入的提示词文本启用自动优化增强，适合不确定如何编写提示词时使用。
   llm_description: Optional enhancement switch.
+- name: callback_url
+  type: string
+  required: false
   form: form
-  default: true
+  label:
+    en_US: Callback Url
+    zh_Hans: 回调 URL
+  human_description:
+    en_US: Set callback url for this operation.
+    zh_Hans: 用于接收异步通知的 Webhook 回调 URL。
+  llm_description: Set callback url for this operation.
 - name: end_image_url
   type: string
   required: false
+  form: form
   label:
     en_US: End image URL
     zh_Hans: 尾帧图片链接
   human_description:
     en_US: Optional. The last frame reference image URL.
-    zh_Hans: 可选，尾帧参考图片链接。
+    zh_Hans: 结尾帧图片的 URL，该图片将作为生成视频的最后一帧。
   llm_description: Optional. The last frame reference image URL.
-  form: form
 - name: start_image_url
   type: string
   required: false
+  form: form
   label:
     en_US: Start image URL
     zh_Hans: 首帧图片链接
   human_description:
     en_US: Optional. The first frame reference image URL.
-    zh_Hans: 可选，首帧参考图片链接。
+    zh_Hans: 起始帧图片的 URL，该图片将作为生成视频的第一帧。
   llm_description: Optional. The first frame reference image URL.
-  form: form
 output_schema:
   type: object
   properties:

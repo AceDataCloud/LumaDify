@@ -1,0 +1,97 @@
+"""Published API contracts; source revisions are recorded in tests/parity-audit.json."""
+
+TASK_PATH = "/luma/tasks"
+
+ENDPOINTS = {
+    "luma_generate_video": {
+        "method": "POST",
+        "path": "/luma/videos",
+        "operation": "generate",
+        "schema": {
+            "type": "object",
+            "properties": {
+                "loop": {"type": "boolean"},
+                "action": {"enum": ["generate", "extend"], "type": "string"},
+                "prompt": {"type": "string"},
+                "timeout": {"type": "number"},
+                "video_id": {"type": "string"},
+                "aspect_ratio": {"type": "string"},
+                "video_url": {"type": "string"},
+                "enhancement": {"type": "boolean"},
+                "callback_url": {"type": "string"},
+                "async": {"type": "boolean"},
+                "end_image_url": {"type": "string"},
+                "start_image_url": {"type": "string"},
+            },
+        },
+        "properties": {
+            "loop": {"type": "boolean"},
+            "action": {"enum": ["generate", "extend"], "type": "string"},
+            "prompt": {"type": "string"},
+            "timeout": {"type": "number"},
+            "video_id": {"type": "string"},
+            "aspect_ratio": {"type": "string"},
+            "video_url": {"type": "string"},
+            "enhancement": {"type": "boolean"},
+            "callback_url": {"type": "string"},
+            "async": {"type": "boolean"},
+            "end_image_url": {"type": "string"},
+            "start_image_url": {"type": "string"},
+        },
+        "parameters": [],
+        "defaults": {"action": "generate", "aspect_ratio": "16:9"},
+        "fixed": {},
+        "allow_empty": [],
+        "query_actions": [],
+        "media_response": False,
+    },
+    "luma_task_retrieve": {
+        "method": "POST",
+        "path": "/luma/tasks",
+        "operation": "task",
+        "schema": {
+            "type": "object",
+            "properties": {
+                "id": {"type": "string"},
+                "ids": {"type": "array", "items": {"type": "string"}},
+                "action": {"enum": ["retrieve", "retrieve_batch"], "type": "string"},
+            },
+        },
+        "properties": {
+            "id": {"type": "string"},
+            "ids": {"type": "array", "items": {"type": "string"}},
+            "action": {"enum": ["retrieve", "retrieve_batch"], "type": "string"},
+        },
+        "parameters": [],
+        "defaults": {"wait_seconds": 0},
+        "fixed": {},
+        "allow_empty": [],
+        "query_actions": ["retrieve", "retrieve_batch", "list", "presets"],
+        "media_response": False,
+    },
+    "luma_tasks_retrieve_batch": {
+        "method": "POST",
+        "path": "/luma/tasks",
+        "operation": "batch",
+        "schema": {
+            "type": "object",
+            "properties": {
+                "id": {"type": "string"},
+                "ids": {"type": "array", "items": {"type": "string"}, "minItems": 1},
+                "action": {"enum": ["retrieve", "retrieve_batch"], "type": "string"},
+            },
+            "required": ["action", "ids"],
+        },
+        "properties": {
+            "id": {"type": "string"},
+            "ids": {"type": "array", "items": {"type": "string"}, "minItems": 1},
+            "action": {"enum": ["retrieve", "retrieve_batch"], "type": "string"},
+        },
+        "parameters": [],
+        "defaults": {},
+        "fixed": {"action": "retrieve_batch"},
+        "allow_empty": [],
+        "query_actions": ["retrieve", "retrieve_batch", "list", "presets"],
+        "media_response": False,
+    },
+}

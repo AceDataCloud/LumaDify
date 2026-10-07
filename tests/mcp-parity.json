@@ -1,0 +1,103 @@
+{
+  "mcp_revision": "f0eed10abf310824cb4c33d4944c63d3654ac95b",
+  "mapping": [
+    {
+      "mcp_tool": "luma_list_aspect_ratios",
+      "dify_tools": [],
+      "parameters": {},
+      "unresolved": [],
+      "note": "Model/action selectors and the API reference; informational guidance does not submit a request."
+    },
+    {
+      "mcp_tool": "luma_list_actions",
+      "dify_tools": [],
+      "parameters": {},
+      "unresolved": [],
+      "note": "Model/action selectors and the API reference; informational guidance does not submit a request."
+    },
+    {
+      "mcp_tool": "luma_get_task",
+      "dify_tools": [
+        "luma_task_retrieve"
+      ],
+      "parameters": {
+        "task_id": "task_id"
+      },
+      "unresolved": [],
+      "note": "Set action=retrieve"
+    },
+    {
+      "mcp_tool": "luma_get_tasks_batch",
+      "dify_tools": [
+        "luma_tasks_retrieve_batch"
+      ],
+      "parameters": {
+        "task_ids": "ids"
+      },
+      "unresolved": [],
+      "note": "Set action=retrieve_batch"
+    },
+    {
+      "mcp_tool": "luma_generate_video",
+      "dify_tools": [
+        "luma_generate_video"
+      ],
+      "parameters": {
+        "prompt": "prompt",
+        "aspect_ratio": "aspect_ratio",
+        "loop": "loop",
+        "enhancement": "enhancement",
+        "timeout": "timeout",
+        "callback_url": "callback_url"
+      },
+      "unresolved": [],
+      "note": "Set action=generate"
+    },
+    {
+      "mcp_tool": "luma_generate_video_from_image",
+      "dify_tools": [
+        "luma_generate_video"
+      ],
+      "parameters": {
+        "prompt": "prompt",
+        "start_image_url": "start_image_url",
+        "end_image_url": "end_image_url",
+        "aspect_ratio": "aspect_ratio",
+        "loop": "loop",
+        "enhancement": "enhancement",
+        "timeout": "timeout",
+        "callback_url": "callback_url"
+      },
+      "unresolved": [],
+      "note": "Set action=generate"
+    },
+    {
+      "mcp_tool": "luma_extend_video",
+      "dify_tools": [
+        "luma_generate_video"
+      ],
+      "parameters": {
+        "video_id": "video_id",
+        "prompt": "prompt",
+        "end_image_url": "end_image_url",
+        "callback_url": "callback_url"
+      },
+      "unresolved": [],
+      "note": "Set action=extend"
+    },
+    {
+      "mcp_tool": "luma_extend_video_from_url",
+      "dify_tools": [
+        "luma_generate_video"
+      ],
+      "parameters": {
+        "video_url": "video_url",
+        "prompt": "prompt",
+        "end_image_url": "end_image_url",
+        "callback_url": "callback_url"
+      },
+      "unresolved": [],
+      "note": "Set action=extend"
+    }
+  ]
+}
