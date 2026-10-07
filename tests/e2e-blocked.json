@@ -1,0 +1,26 @@
+{
+  "status": "blocked_by_current_api",
+  "browser_tested": true,
+  "environment": "Dify CE 1.17.1 / plugin daemon 0.6.10-local, official remote debug, signature verification true",
+  "reason": "The current video-generation service returned an internal server error for the recorded text and image workflows.",
+  "cases": [
+    {
+      "case": "Luma Dify E2E",
+      "workflow_status": "failed",
+      "task_status": null,
+      "submitted_task_id": "c23cc028-7925-498a-841a-3def8b485189",
+      "error": "An error occurred in the acedatacloud/luma/luma, please contact the author of acedatacloud/luma/luma for help, error type: AceDataLumaError, error details: Task failed. Check its details in the Ace Data Cloud console.",
+      "run_id": "0d538ce1-df61-49c9-895d-ead36d8fb99c"
+    },
+    {
+      "case": "Luma Image Dify E2E",
+      "workflow_status": "failed",
+      "task_status": null,
+      "submitted_task_id": null,
+      "error": "An error occurred in the acedatacloud/luma/luma, please contact the author of acedatacloud/luma/luma for help, error type: AceDataLumaError, error details: Task failed. Check its details in the Ace Data Cloud console.",
+      "run_id": "80ba7e02-2519-4b14-9abf-ef0441c1dfb9"
+    }
+  ],
+  "marketplace_submitted": false,
+  "next_action": "Retest after service availability or API behavior changes; never mark accepted/pending jobs complete."
+}
