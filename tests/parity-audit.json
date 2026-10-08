@@ -1,0 +1,52 @@
+{
+  "backend_revision": "fa94598267a82545fb1afed6ee26bafd6cbb9ca7",
+  "mcp_revision": "f0eed10abf310824cb4c33d4944c63d3654ac95b",
+  "tools": [
+    {
+      "tool": "luma_generate_video",
+      "method": "POST",
+      "path": "/luma/videos",
+      "parameters": [
+        "loop",
+        "action",
+        "prompt",
+        "timeout",
+        "video_id",
+        "aspect_ratio",
+        "video_url",
+        "enhancement",
+        "callback_url",
+        "end_image_url",
+        "start_image_url"
+      ],
+      "aliases": {},
+      "schema_source": "openapi/94fc9028-5a9f-4875-aae4-38463bd30ac5.json"
+    },
+    {
+      "tool": "luma_task_retrieve",
+      "method": "POST",
+      "path": "/luma/tasks",
+      "parameters": [
+        "task_id",
+        "wait_seconds"
+      ],
+      "aliases": {},
+      "schema_source": "openapi/909282be-6f03-44ac-8d26-2e28080c0dfc.json"
+    },
+    {
+      "tool": "luma_tasks_retrieve_batch",
+      "method": "POST",
+      "path": "/luma/tasks",
+      "parameters": [
+        "ids"
+      ],
+      "aliases": {},
+      "schema_source": "openapi/909282be-6f03-44ac-8d26-2e28080c0dfc.json"
+    }
+  ],
+  "mcp_scope": "luma",
+  "notes": [
+    "Informational MCP model/action lists are represented by tool dropdowns and README capability tables.",
+    "GPT Image covers image-generation/editing/task capabilities of the broader OpenAI MCP; chat is supplied by ModelProviderDify."
+  ]
+}
