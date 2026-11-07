@@ -1,0 +1,17 @@
+{
+  "backend_revision": "7b4bbf0e4f6b83c273baed1d5b8e9bea0f3ece1c",
+  "apis": [
+    {
+      "path": "/luma/videos",
+      "spec": "openapi/94fc9028-5a9f-4875-aae4-38463bd30ac5.json"
+    }
+  ],
+  "icon_source": {
+    "repository": "AceDataCloud/Dify",
+    "revision": "eaf0e68cd34cfe4cadece7a9ee34a98aac6b961e^",
+    "path": "plugins/luma/_assets/icon.jpg"
+  },
+  "icon_sha256": {
+    "icon.jpg": "485034bc9c9ad0ef7aacbda4f24b8cc6ec02c49b7b812b2a4fedf17029368a47"
+  }
+}

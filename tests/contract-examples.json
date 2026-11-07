@@ -1,0 +1,44 @@
+[
+  {
+    "name": "luma_generate_video-1",
+    "tool": "luma_generate_video",
+    "inputs": {
+      "prompt": "Test"
+    },
+    "method": "POST",
+    "path": "/luma/videos",
+    "body": {
+      "action": "generate",
+      "async": true
+    }
+  },
+  {
+    "name": "luma_generate_video-2",
+    "tool": "luma_generate_video",
+    "inputs": {
+      "action": "extend",
+      "video_id": "owned-video"
+    },
+    "method": "POST",
+    "path": "/luma/videos",
+    "body": {
+      "video_id": "owned-video"
+    }
+  },
+  {
+    "name": "luma_tasks_retrieve_batch-3",
+    "tool": "luma_tasks_retrieve_batch",
+    "inputs": {
+      "ids": "[\"owned-task\"]"
+    },
+    "method": "POST",
+    "path": "/luma/tasks",
+    "body": {
+      "action": "retrieve_batch",
+      "ids": [
+        "owned-task"
+      ]
+    },
+    "read_only": true
+  }
+]
