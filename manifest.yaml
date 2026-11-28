@@ -1,12 +1,12 @@
-version: 0.0.1
+version: 0.0.2
 type: plugin
 author: acedatacloud
 name: luma
 label:
-  en_US: Luma by Ace Data Cloud
-  zh_Hans: Luma by Ace Data Cloud
-  ja_JP: Luma by Ace Data Cloud
-  pt_BR: Luma by Ace Data Cloud
+  en_US: Luma
+  zh_Hans: Luma
+  ja_JP: Luma
+  pt_BR: Luma
 description:
   en_US: Use the Ace Data Cloud Luma APIs in Dify workflows.
   zh_Hans: 在 Dify 工作流中使用 Ace Data Cloud Luma API。
